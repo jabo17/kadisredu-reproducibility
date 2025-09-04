@@ -26,13 +26,14 @@ Compute nodes are connected by a InfiniBand 4X HDR 200 GBit/s interconnect.
 All algorithms are implemented in C++ and compiled using NGU GCC13.
 For interprocess communication, we use IntelMPI 2021.11 and the MPI-wrapper KaMPIng.
 
-First, we provide you a list with all the dependencies which are required to run and evaluated the experiments.
 To simplify the installation process on a single machine or on HoreKa, we provide a docker container and a moule environment, respectively.
 In general, we assume that you have an internet connection to download and install software from the internet.
-
+If neither of those two is an option, you need to provide dependencies yourself.
+On most HPC systems, many of them are pre-installed and can be loaded into the active software-stack.
 
 1. Method: Provide the dependencies yourself
-- 
+ -
+ -
 
 2. Method: HoreKa
 If you are using HoreKa, the dependencies can be provided via `module`.
