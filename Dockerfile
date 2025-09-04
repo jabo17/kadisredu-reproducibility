@@ -78,7 +78,7 @@ RUN apt update -y && apt upgrade -y && \
 
 # create a user `kadisredu`
 ARG USERNAME=kadisredu
-ARG USER_ID=1010
+ARG USER_ID=1000
 ARG USER_GID=$USER_ID
 
 RUN groupadd --gid $USER_GID $USERNAME \
