@@ -1,1 +1,58 @@
-# kadisredu-reproducibility
+# Artifact evaluation of KaDisRedu
+
+In the following, we reproduce the artifacts of the paper[^1] obtained with the implementation[^2].
+However, we would like to address two difficulties regarding reproducibility in advance:
+
+1. Our algorithms are designed for distributed-memory machines which typically requires access to a HPC cluster.
+Although one can run our algorithms on a single compute node (single machine), this is not sufficient for investigating communication between processes (PEs) over a network and typically does not allow scaling to 1024 cores.
+Morover, running distributed algorithms on an HPC cluster and evaluating their results with a "one-click"-script is typically impossible.
+From our experience, HPC cluster jobs are failing from time to time with unknown reason for the callee.
+Still, we aim to provide you a setup which comes close to a "one-click"-script.
+2. Our set of benchmark instances (graphs) requires a lot of storage, and therefore cannot be made easily publicly available for download.
+To that end, we provide only a subset of them.
+
+## 1. Step: Clone This Repository
+First, we need to clone this repository.
+```bash
+# At you machine where you want to run the experiments
+git clone https://github.com/jabo17/kadisredu-reproducibility.git
+```
+
+## Experiment Environment
+
+We used the HPC cluster HoreKa for our experiments.
+Each nocde is equipped with two Intel Xeon Platinum 8368 processors with 38 cores each and 256 GB of main memory.
+Compute nodes are connected by a InfiniBand 4X HDR 200 GBit/s interconnect.
+All algorithms are implemented in C++ and compiled using NGU GCC13.
+For interprocess communication, we use IntelMPI 2021.11 and the MPI-wrapper KaMPIng.
+
+First, we provide you a list with all the dependencies which are required to run and evaluated the experiments.
+To simplify the installation process on a single machine or on HoreKa, we provide a docker container and a moule environment, respectively.
+In general, we assume that you have an internet connection to download and install software from the internet.
+
+
+1. Method: Provide the dependencies yourself
+- 
+
+2. Method: HoreKa
+If you are using HoreKa, the dependencies can be provided via `module`.
+```bash
+# At HoreKa login node
+cd kadisredu-reproducibility
+cp horeka_modules_kadisredu.hk ~/.config/lmod/
+module restore horeka_modules_kadisredu
+```
+
+3. Method 
+
+
+### Method 3: Single Machine Docker Container
+
+
+
+
+
+
+## References
+[^1]: TODO Link to the paper
+[^2]: TODO Link to repository
