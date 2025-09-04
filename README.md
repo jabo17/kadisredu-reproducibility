@@ -9,7 +9,7 @@ Morover, running distributed algorithms on an HPC cluster and evaluating their r
 From our experience, HPC cluster jobs are failing from time to time with unknown reason for the callee.
 Still, we aim to provide you a setup which comes close to a "one-click"-script.
 2. Our set of benchmark instances (graphs) requires a lot of storage, and therefore cannot be made easily publicly available for download.
-To that end, we provide only a subset of them.
+To that end, we provide only a subset of them. 
 
 ## Setup Experiment Environment
 
@@ -41,6 +41,7 @@ Afterwards, follow one of the three options:
 - IntelMPI 2021.11 or higher
 - Intel TBB 2021.4.0 or higher
 - libsparsehash (Google Sparsehash)
+- GNU patch 2.7.6
 
 #### 1.2 Evaluation Software-Stack
 The following packages are required for evaluation
@@ -78,7 +79,38 @@ sh 00_pull_docker_image.sh
 sh 01_run_docker_container.sh
 ```
 
+## Build Benchmark
+1. Fetch KaDisRedu and HtWIS
+```bash
+sh 02_fetch_algorithms.sh
+```
+3. Build KaDisRedu
+```bash
+sh 03_build_kadisredu.sh
+```
+4. Build HtWIS
+```bash
+sh 04_build_htwis.sh
+```
+
 ## Run Experiments
+
+
+### Run KaDisRedu For Strong Scaling
+
+### Run KaDisRedu For Weak Scaling
+
+### Run HtWIS
+
+## Artifacts
+
+### A1 Reduction Impact
+
+### A2 Reduction Time
+
+### A3 Comparison With HtWIS
+
+### A4 Weak Scaling
 
 ## Evaluate Experiments To Obtain Artifacts
 

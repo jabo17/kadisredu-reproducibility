@@ -1,0 +1,70 @@
+diff -ruN htwis/Graph.cpp htwis_patched/Graph.cpp
+--- htwis/Graph.cpp	2025-09-04 16:10:55.659775788 +0200
++++ htwis_patched/Graph.cpp	2025-09-04 16:19:52.650473120 +0200
+@@ -1,4 +1,4 @@
+-#pragma once
++//#pragma once
+ #define _CRT_SECURE_NO_DEPRECATE
+ #include "cstdio"
+ #include "Graph.h"
+@@ -7,6 +7,7 @@
+ //#define MAX_WEIGHT 201
+ //#define iter
+ #define edge_id(a,b) (a > 0 ? (edges[a-1]+b) : b)
++
+ int factorial[] = {0,0,2,6,12,20,30,42,56,72,90};
+ 
+ Graph::Graph() {
+@@ -28,7 +29,7 @@
+ void Graph::readGraph(string dir) {
+ 	clock_t start = clock();
+ 	printf("Graph: %s\n", dir.c_str());
+-	FILE* f = open_file(("../Data/"+dir+".gra").c_str(), "rb");
++	FILE* f = open_file(dir.c_str(), "rb");
+ 
+ 	int tt;
+ 	fread(&tt, sizeof(int), 1, f);
+@@ -4359,4 +4360,4 @@
+ 
+ 	printf("total weight :%d ,  remainder : %d , total time cost : %f\n", total_weight, remainder, (float)(end - start) * 1000 / CLOCKS_PER_SEC);
+ 	delete[] weight_copy;
+-}
+\ No newline at end of file
++}
+diff -ruN htwis/Graph.h htwis_patched/Graph.h
+--- htwis/Graph.h	2025-09-04 16:10:55.659775788 +0200
++++ htwis_patched/Graph.h	2025-09-04 16:19:52.650462317 +0200
+@@ -1,6 +1,7 @@
+ #pragma once
+ #include <vector>
+ #include <cstring>
++#include <string>
+ #include <algorithm>
+ #include <time.h>
+ #include <map>
+@@ -74,4 +75,4 @@
+ 	void clearsingle(bool* adj, VI& pone, VI& degree_one, VI& degree_two);
+ 	int path_reduction(int* dp, int start, int end);
+ 	void path_recover(int* V, int num);
+-};
+\ No newline at end of file
++};
+diff -ruN htwis/MWIS3.cpp htwis_patched/MWIS3.cpp
+--- htwis/MWIS3.cpp	2025-09-04 16:10:55.659775788 +0200
++++ htwis_patched/MWIS3.cpp	2025-09-04 16:19:52.650449174 +0200
+@@ -1,11 +1,14 @@
+-#pragma once
++//#pragma once
+ #include <iostream>
+ #include <sstream>
+ #include <fstream>
+ #include "Graph.h"
+ 
++#ifdef _WIN32
+ #include <io.h>
++#else
+ #include <unistd.h>
++#endif
+ #include <ios>
+ #include <string>
+ 
