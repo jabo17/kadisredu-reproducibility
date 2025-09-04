@@ -62,7 +62,7 @@ We evaluate the experiments our local machine.
 Therefore, the experiment output must be downloaded.
 
 To evaluate the experiments, ensure that you have installed the software from [1.2 Evaluation Software-Stack](#12-evaluation-software-stack).
-Instead of installing the evaluation software-stack yourself, you can also run the docker image as described in [3. Method](#3-method).
+Instead of installing the evaluation software-stack yourself, you can also run the docker image as described in [3. Method](#3-method-docker-single-machine).
 
 ### 3. Method: Docker (Single Machine)
 1. Go into `kadisredu-reproducibility`
