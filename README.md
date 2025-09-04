@@ -29,7 +29,7 @@ In general, we assume that you have an internet connection to download and insta
 First, we need to clone this repository.
 ```bash
 # At you machine where you want to run the experiments
-git clone https://github.com/jabo17/kadisredu-reproducibility.git
+git clone https://github.com/jabo17/kadisredu-reproducibility.git --recursive
 ```
 
 Afterwards, follow one of the three options:
@@ -94,7 +94,6 @@ sh 04_build_htwis.sh
 ```
 
 ## Run Experiments
-
 
 ### Run KaDisRedu For Strong Scaling
 
