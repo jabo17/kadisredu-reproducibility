@@ -50,9 +50,9 @@ ENV SETVARS_COMPLETED='1'
 # KaDisRedu specific dependencies
 
 # Install G++13
-RUN apt update && apt install software-properties-common -y \
+RUN apt update -y && apt install software-properties-common -y \
  && add-apt-repository ppa:ubuntu-toolchain-r/test -y \
- && apt update \
+ && apt update -y
 
 RUN apt update -y && apt upgrade -y && \
     DEBIAN_FRONTEND=noninteractive apt install -y gcc-13 g++-13
@@ -62,13 +62,9 @@ RUN wget https://cmake.org/files/v3.30/cmake-3.30.3-linux-x86_64.sh && \
     sh cmake-3.30.3-linux-x86_64.sh --skip-license --prefix=/usr/local
 
 # Install pyenv
-RUN apt-get update && apt-get install -y --no-install-recommends \
-      python3 python3-pip python3-venv pipx \
-  && pipx ensurepath \
-  && rm -rf /var/lib/apt/lists/*
-
-# Install pipenv into its own isolated env
-RUN pipx install pipenv
+RUN apt update -y && apt upgrade -y && \
+    DEBIAN_FRONTEND=noninteractive apt install -y pip && \
+    pip install pipenv
 
 # Install dependencies for evaluation
 ENV TZ="Europe/Berlin"
