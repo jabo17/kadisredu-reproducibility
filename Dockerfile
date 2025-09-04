@@ -3,7 +3,7 @@
 # Copyright (c) 2020-2021 Intel Corporation.
 # SPDX-License-Identifier: BSD-3-Clause
 
-FROM ubuntu:24.04
+FROM ubuntu:22.04
 MAINTAINER Jannick Borowitz <jannick.borowitz@kit.edu>
 RUN apt-get update && apt-get upgrade -y && \
   DEBIAN_FRONTEND=noninteractive apt-get install -y --no-install-recommends \
@@ -50,6 +50,10 @@ ENV SETVARS_COMPLETED='1'
 # KaDisRedu specific dependencies
 
 # Install G++13
+RUN apt update && apt install software-properties-common -y \
+ && add-apt-repository ppa:ubuntu-toolchain-r/test -y \
+ && apt update \
+
 RUN apt update -y && apt upgrade -y && \
     DEBIAN_FRONTEND=noninteractive apt install -y gcc-13 g++-13
 
