@@ -13,16 +13,18 @@ To that end, we provide only a subset of them.
 
 ## Setup Experiment Environment
 
+> [!NOTE]
 We used the HPC cluster HoreKa for our experiments.
 Each nocde is equipped with two Intel Xeon Platinum 8368 processors with 38 cores each and 256 GB of main memory.
 Compute nodes are connected by a InfiniBand 4X HDR 200 GBit/s interconnect.
 All algorithms are implemented in C++ and compiled using NGU GCC13.
 For interprocess communication, we use IntelMPI 2021.11 and the MPI-wrapper KaMPIng.
 
-To simplify the installation process on a single machine or on HoreKa, we provide a docker container and a moule environment, respectively.
-In general, we assume that you have an internet connection to download and install software from the internet.
-If neither of those two is an option, you need to provide dependencies yourself.
-On most HPC systems, many of them are pre-installed and can be loaded into the active software-stack.
+> [!TIP]
+> To simplify the installation process on a single machine or on HoreKa, we provide a docker container and a module environment, respectively.
+> In general, we assume that you have an internet connection to download and install software from the internet.
+> If neither of those two is an option, you need to provide dependencies yourself.
+> On most HPC systems, many of them are pre-installed and can be loaded into the active software-stack.
 
 First, we need to clone this repository.
 ```bash
@@ -32,11 +34,20 @@ git clone https://github.com/jabo17/kadisredu-reproducibility.git
 
 Afterwards, follow one of the three options:
 ### 1. Method: Provide the dependencies yourself
-- TODO
-- TODO
+- CMake 3.30 or higher
+- GNU G++13 or higher
+- IntelMPI 2021.11 or higher
+- Intel TBB 2021.4.0 or higher
+- libsparsehash (Google Sparsehash)
+
+The following packages are required for evaluation
+- Python and Pipenv
+- Texlive
+- AWK
+
 
 ### 2. Method: HoreKa
-If you are using HoreKa, the dependencies can be provided via `module`.
+If you are using HoreKa, the dependencies to run the experiments can be provided via `module`.
 ```bash
 # At HoreKa login node
 cd kadisredu-reproducibility
@@ -45,7 +56,16 @@ cp horeka/modules_kadisredu.hk ~/.config/lmod/
 module restore modules_kadisredu
 ```
 
+We evaluate the experiments our local machine.
+Therefore, the experiment output must be downloaded.
+
+TODO
+
 ### 3. Method: Docker (Single Machine)
+1. Pull the docker image
+```bash
+
+```
 
 
 ## Run Experiments
