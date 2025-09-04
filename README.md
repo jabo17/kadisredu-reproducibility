@@ -31,20 +31,26 @@ In general, we assume that you have an internet connection to download and insta
 If neither of those two is an option, you need to provide dependencies yourself.
 On most HPC systems, many of them are pre-installed and can be loaded into the active software-stack.
 
-1. Method: Provide the dependencies yourself
- -
- -
+First, we need to clone this repository.
+```bash
+# At you machine where you want to run the experiments
+git clone https://github.com/jabo17/kadisredu-reproducibility.git
+```
 
+1. Method: Provide the dependencies yourself
+    - TODO
+    - TODO
 2. Method: HoreKa
 If you are using HoreKa, the dependencies can be provided via `module`.
 ```bash
 # At HoreKa login node
 cd kadisredu-reproducibility
-cp horeka_modules_kadisredu.hk ~/.config/lmod/
-module restore horeka_modules_kadisredu
+cp horeka/modules_kadisredu.hk ~/.config/lmod/
+# to load the software
+module restore modules_kadisredu
 ```
+3. Method: Docker
 
-3. Method 
 
 
 ### Method 3: Single Machine Docker Container

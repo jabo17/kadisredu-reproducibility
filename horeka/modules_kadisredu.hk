@@ -1,0 +1,78 @@
+-- -*- lua -*-
+-- created: Thu Jun  5 09:18:18 2025 --
+-- Lmod 8.7.55 2024-12-13 12:24 -07:00
+_ModuleTable_ = {
+  MTversion = 3,
+  c_rebuildTime = 7200.0,
+  c_shortTime = 0.33646583557129,
+  depthT = {},
+  family = {
+    cmake = "devel/cmake",
+    compiler = "compiler/gnu",
+    mpi = "mpi/impi",
+  },
+  mT = {
+    ["compiler/gnu"] = {
+      actionA = {
+        "prepend_path(\"MODULEPATH\",\"/software/all/lmod/modulefiles/Compiler/gnu/13\")",
+      },
+      fn = "/software/all/lmod/modulefiles/Core/compiler/gnu/13.lua",
+      fullName = "compiler/gnu/13",
+      hash = "19a9b323367baf523a10587469ec2b04bed1352b",
+      loadOrder = 1,
+      propT = {},
+      stackDepth = 0,
+      status = "active",
+      userName = "compiler/gnu/13",
+      wV = "^00000013.*zfinal",
+    },
+    ["devel/cmake"] = {
+      fn = "/software/all/lmod/modulefiles/Core/devel/cmake/3.30.lua",
+      fullName = "devel/cmake/3.30",
+      hash = "da39a3ee5e6b4b0d3255bfef95601890afd80709",
+      loadOrder = 3,
+      propT = {},
+      stackDepth = 0,
+      status = "active",
+      userName = "devel/cmake/3.30",
+      wV = "000000003.000000030.*zfinal",
+    },
+    ["devel/tbb"] = {
+      fn = "/software/all/lmod/modulefiles/Core/devel/tbb/2021.4.0.lua",
+      fullName = "devel/tbb/2021.4.0",
+      hash = "da39a3ee5e6b4b0d3255bfef95601890afd80709",
+      loadOrder = 4,
+      propT = {},
+      stackDepth = 0,
+      status = "active",
+      userName = "devel/tbb/2021.4.0",
+      wV = "000002021.000000004.*zfinal",
+    },
+    ["mpi/impi"] = {
+      actionA = {
+        "prepend_path(\"MODULEPATH\",\"/software/all/lmod/modulefiles/MPI/gnu/13/impi/2021.11\")",
+      },
+      fn = "/software/all/lmod/modulefiles/Compiler/gnu/13/mpi/impi/2021.11.lua",
+      fullName = "mpi/impi/2021.11",
+      hash = "3daf488b4f1031de518a8502e1cec18b09fd1a0c",
+      loadOrder = 2,
+      propT = {},
+      stackDepth = 0,
+      status = "active",
+      userName = "mpi/impi/2021.11",
+      wV = "000002021.000000011.*zfinal",
+    },
+  },
+  mpathA = {
+    "/software/all/lmod/modulefiles/MPI/gnu/13/impi/2021.11", "/software/all/lmod/modulefiles/Compiler/gnu/13", "/software/all/lmod/modulefiles/Core", "/software/community/ICON/modulefiles", "/software/kit/lmod/modulefiles", "/software/bw/lmod/modulefiles",
+  },
+  mpathRefCountT = {
+    ["/software/all/lmod/modulefiles/Compiler/gnu/13"] = 1,
+    ["/software/all/lmod/modulefiles/Core"] = 1,
+    ["/software/all/lmod/modulefiles/MPI/gnu/13/impi/2021.11"] = 1,
+    ["/software/bw/lmod/modulefiles"] = 1,
+    ["/software/community/ICON/modulefiles"] = 1,
+    ["/software/kit/lmod/modulefiles"] = 1,
+  },
+  systemBaseMPATH = "/software/all/lmod/modulefiles/Core:/software/community/ICON/modulefiles:/software/kit/lmod/modulefiles:/software/bw/lmod/modulefiles",
+}
