@@ -3,7 +3,7 @@
 # Copyright (c) 2020-2021 Intel Corporation.
 # SPDX-License-Identifier: BSD-3-Clause
 
-FROM ubuntu:22.04
+FROM ubuntu:24.04
 MAINTAINER Jannick Borowitz <jannick.borowitz@kit.edu>
 RUN apt-get update && apt-get upgrade -y && \
   DEBIAN_FRONTEND=noninteractive apt-get install -y --no-install-recommends \
@@ -47,8 +47,9 @@ ENV PKG_CONFIG_PATH="/opt/intel/oneapi/tbb/${TBB_VERSION}/lib/pkgconfig:${PKG_CO
 ENV TBBROOT="/opt/intel/oneapi/tbb/${TBB_VERSION}"
 ENV SETVARS_COMPLETED='1'
 
-# KaMPIng specific dependencies
+# KaDisRedu specific dependencies
 
+# Install G++13
 RUN apt update -y && apt upgrade -y && \
     DEBIAN_FRONTEND=noninteractive apt install -y gcc-13 g++-13
 
@@ -57,9 +58,13 @@ RUN wget https://cmake.org/files/v3.30/cmake-3.30.3-linux-x86_64.sh && \
     sh cmake-3.30.3-linux-x86_64.sh --skip-license --prefix=/usr/local
 
 # Install pyenv
-RUN apt update -y && apt upgrade -y && \
-    DEBIAN_FRONTEND=noninteractive apt install -y pip && \
-    pip install pipenv
+RUN apt-get update && apt-get install -y --no-install-recommends \
+      python3 python3-pip python3-venv pipx \
+  && pipx ensurepath \
+  && rm -rf /var/lib/apt/lists/*
+
+# Install pipenv into its own isolated env
+RUN pipx install pipenv
 
 # Install dependencies for evaluation
 ENV TZ="Europe/Berlin"
@@ -73,7 +78,7 @@ RUN apt update -y && apt upgrade -y && \
 
 # create a user `kadisredu`
 ARG USERNAME=kadisredu
-ARG USER_ID=1000
+ARG USER_ID=1010
 ARG USER_GID=$USER_ID
 
 RUN groupadd --gid $USER_GID $USERNAME \
