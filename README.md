@@ -11,14 +11,7 @@ Still, we aim to provide you a setup which comes close to a "one-click"-script.
 2. Our set of benchmark instances (graphs) requires a lot of storage, and therefore cannot be made easily publicly available for download.
 To that end, we provide only a subset of them.
 
-## 1. Step: Clone This Repository
-First, we need to clone this repository.
-```bash
-# At you machine where you want to run the experiments
-git clone https://github.com/jabo17/kadisredu-reproducibility.git
-```
-
-## Experiment Environment
+## Setup Experiment Environment
 
 We used the HPC cluster HoreKa for our experiments.
 Each nocde is equipped with two Intel Xeon Platinum 8368 processors with 38 cores each and 256 GB of main memory.
@@ -37,10 +30,12 @@ First, we need to clone this repository.
 git clone https://github.com/jabo17/kadisredu-reproducibility.git
 ```
 
-1. Method: Provide the dependencies yourself
-    - TODO
-    - TODO
-2. Method: HoreKa
+Afterwards, follow one of the three options:
+### 1. Method: Provide the dependencies yourself
+- TODO
+- TODO
+
+### 2. Method: HoreKa
 If you are using HoreKa, the dependencies can be provided via `module`.
 ```bash
 # At HoreKa login node
@@ -49,15 +44,13 @@ cp horeka/modules_kadisredu.hk ~/.config/lmod/
 # to load the software
 module restore modules_kadisredu
 ```
-3. Method: Docker
+
+### 3. Method: Docker (Single Machine)
 
 
+## Run Experiments
 
-### Method 3: Single Machine Docker Container
-
-
-
-
+## Evaluate Experiments To Obtain Artifacts
 
 
 ## References
