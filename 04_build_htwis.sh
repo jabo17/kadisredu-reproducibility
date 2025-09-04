@@ -2,4 +2,5 @@
 
 cd htwis
 make
+mv mwis3 htwis
 cd ..
