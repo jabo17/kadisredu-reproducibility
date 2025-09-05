@@ -93,6 +93,16 @@ sh 03_build_kadisredu.sh
 sh 04_build_htwis.sh
 ```
 
+## Download instances
+
+We provide a subset of the graphs as download. If you are interested in the full data set, feel free to reach out to us.
+```bash
+wget https://www.dropbox.com/scl/fi/4ddtfhnud4a9v1mkm1g83/mini.tar.xz?rlkey=glwactbxf05bailtaem4685ix&st=u8cktwzn&dl=0
+tar -xJf mini.tar.xz
+mv mini instances
+rm mini.tar.xz
+```
+
 ## Run Experiments
 
 We can now run the experimentes.
@@ -117,7 +127,7 @@ In the weak scaling experiments, we linearly increase the number of vertices and
 We investigate three different graph families, using the graph generator [KaGen](https://github.com/KarlsruheGraphGeneration/KaGen).
 
 To run the experiments, execute the following:
-```
+```bash
 # in experiments/
 sh 02_run_kadisredu_weak.sh
 ```
@@ -126,6 +136,12 @@ sh 02_run_kadisredu_weak.sh
 
 ## Artifacts
 
+After you all experiments were performed, we can evaluate them to obtain the artifacts (tables and plots).
+Therefore, change your working directory to `artifacts`.
+```bash
+cd artifacts
+```
+
 ### A1 Reduction Impact
 
 ### A2 Reduction Time
@@ -133,6 +149,21 @@ sh 02_run_kadisredu_weak.sh
 ### A3 Comparison With HtWIS
 
 ### A4 Weak Scaling
+
+In our weak scaling experiments we compared our heuristic distributed MWIS solvers in terms of the throughput (edges per second) for each instance.
+
+To gather all important metrics from the weak scaling experiment in a CSV, run the following:
+```bash
+cd weak
+sh 00_kadisredu_weak_results_csv.sh
+```
+
+To obtain the throughput plots given the CSV, run now:
+```bash
+
+```
+
+Moreover, we investigated the decrease in the number of vertices when applying our distributed reductions 
 
 ## Evaluate Experiments To Obtain Artifacts
 
