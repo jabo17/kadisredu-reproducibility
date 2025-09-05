@@ -164,7 +164,7 @@ To obtain the results on the same data set with HtWIS, run the following:
 sh 01_htwis_results_csv.sh # creates htwis_results.csv
 ```
 
-### A2 Weak Scaling
+### A3 Weak Scaling
 
 To gather all important metrics from the weak scaling experiment in a CSV, run the following:
 ```bash
