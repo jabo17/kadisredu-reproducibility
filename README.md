@@ -85,7 +85,7 @@ sh 02_fetch_algorithms.sh
 ```bash
 sh 03_build_kadisredu.sh
 ```
-4. Build HtWIS
+4. Build the competitor [HtWIS](https://github.com/mwis-abc/mwis-source-code)
 ```bash
 sh 04_build_htwis.sh
 ```
@@ -127,10 +127,16 @@ We investigate three different graph families, using the graph generator [KaGen]
 To run the experiments, execute the following:
 ```bash
 # in experiments/
-sh 02_run_kadisredu_weak.sh
+sh 01_run_kadisredu_weak.sh
 ```
 
 ### Run HtWIS
+
+To run the sequential reduce-and-peel algorithm HtWIS as competitor, run the following:
+```bash
+# in experiments/
+sh 02_run_htwis.sh
+```
 
 ## Artifacts
 
