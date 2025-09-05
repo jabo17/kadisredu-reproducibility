@@ -92,9 +92,11 @@ sh 04_build_htwis.sh
 
 ## Download instances
 
-We provide a subset of the graphs as download. If you are interested in the full data set, feel free to reach out to us.
+We provide a subset of the graphs as download. If you are interested in the data set, we can provide you the download link.
+Moreover, if you are interested in the full data set, please contact us.
 ```bash
-wget https://www.dropbox.com/scl/fi/4ddtfhnud4a9v1mkm1g83/mini.tar.xz?rlkey=glwactbxf05bailtaem4685ix&st=u8cktwzn&dl=0
+download_link="CONTACT_US"
+wget $download_link
 tar -xJf mini.tar.xz
 mv mini instances
 rm mini.tar.xz
