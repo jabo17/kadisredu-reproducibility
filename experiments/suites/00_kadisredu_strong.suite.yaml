@@ -1,0 +1,47 @@
+name: 00_kadisredu_strong
+executable: kadisredu/build/apps/kadisredu_app
+ncores: [1, 64, 128, 256, 512, 1024]
+time_limit: 7200
+seeds: [1, 2, 3, 4]
+threads_per_rank: [1]
+graphs:
+  - generator: dummy
+    name: Bump_2911_uf200
+    kagen_option_string: "file;filename=../instances/Bump_2911_uf200.parhip;distribution=balance-edges"
+  - generator: dummy
+    name: circuit5M_uf200
+    kagen_option_string: "file;filename=../instances/circuit5M_uf200.parhip;distribution=balance-edges"
+  - generator: dummy
+    name: germany.osm_uf200
+    kagen_option_string: "file;filename=../instances/germany.osm_uf200.parhip;distribution=balance-edges"
+  - generator: dummy
+    name: hollywood-2011_uf200
+    kagen_option_string: "file;filename=../instances/hollywood-2011_uf200.parhip;distribution=balance-edges"
+  - generator: dummy
+    name: mesh_buddha-uniform
+    kagen_option_string: "file;filename=../instances/mesh_buddha-uniform.parhip;distribution=balance-edges"
+  - generator: dummy
+    name: snap_com-youtube
+    kagen_option_string: "file;filename=../instances/snap_com-youtube.parhip;distribution=balance-edges"
+  - generator: dummy
+    name: snap_roadNet-CA-uniform
+    kagen_option_string: "file;filename=../instances/snap_roadNet-CA-uniform.parhip;distribution=balance-edges"
+  - generator: dummy
+    name: snap_soc-pokec-relationships-uniform
+    kagen_option_string: "file;filename=../instances/snap_soc-pokec-relationships-uniform.parhip;distribution=balance-edges"
+  - generator: dummy
+    name: snap_wiki-Talk-uniform
+    kagen_option_string: "file;filename=../instances/snap_wiki-Talk-uniform.parhip;distribution=balance-edges"
+  - generator: dummy
+    name: wiki-topcats_uf200
+    kagen_option_string: "file;filename=../instances/wiki-topcats_uf200.parhip;distribution=balance-edges"
+config:
+  - config: 
+    - ../kadisredu/configs/normal_aRG.toml
+    - ../kadisredu/configs/normal_RG.toml
+    - ../kadisredu/configs/aG.toml
+    - ../kadisredu/configs/G.toml
+    - ../kadisredu/configs/async_rnp.toml
+    - ../kadisredu/configs/sync_rnp.toml
+    time_limit: 7200
+    warmup_mpi: True

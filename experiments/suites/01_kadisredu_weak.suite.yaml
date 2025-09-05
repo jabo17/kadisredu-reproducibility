@@ -1,0 +1,42 @@
+name: 01_kadisredu_weak
+executable: kadisredu/build/apps/kadisredu_app
+ncores: [1, 2, 4, 8, 16, 32, 64, 128, 256, 512, 1024]
+time_limit: 7200
+seeds: [1, 2, 3, 4]
+threads_per_rank: [1]
+graphs:
+  - generator: kagen
+    type: gnm-undirected
+    N: 20
+    M: 22
+    scale_weak: TRUE
+    vertexweights-generator: uniform_random
+    vertexweights-range-begin: 1
+    vertexweights-range-end: 201
+  - generator: kagen
+    type: rgg2d
+    N: 20
+    M: 22
+    scale_weak: TRUE
+    vertexweights-generator: uniform_random
+    vertexweights-range-begin: 1
+    vertexweights-range-end: 201
+  - generator: kagen
+    type: rhg
+    N: 20
+    M: 22
+    gamma: 2.8
+    scale_weak: TRUE
+    vertexweights-generator: uniform_random
+    vertexweights-range-begin: 1
+    vertexweights-range-end: 201
+config:
+  - config: 
+    - ../kadisredu/configs/RGA.toml
+    - ../kadisredu/configs/RGS.toml
+    - ../kadisredu/configs/GA.toml
+    - ../kadisredu/configs/GS.toml
+    - ../kadisredu/configs/RnPA.toml
+    - ../kadisredu/configs/RnPS.toml
+    time_limit: 7200
+    warmup_mpi: True
