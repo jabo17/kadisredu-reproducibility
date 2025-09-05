@@ -142,8 +142,8 @@ sh 02_run_htwis.sh
 
 ## Artifacts
 
-After all experiments were performed, we can obtain CSV file which with the most relavant data which were use to support our claims in the paper[^1].
-Therefore, change your working directory to `artifacts`.
+After all experiments were performed, you can obtain CSV files with the most relavant data which support our claims in the paper[^1].
+To obtain them, change your working directory to `artifacts`.
 ```bash
 cd artifacts
 ```
