@@ -95,9 +95,32 @@ sh 04_build_htwis.sh
 
 ## Run Experiments
 
+We can now run the experimentes.
+Therefore, change your working directory to `experiments/`.
+```bash
+cd experiments
+```
+The directory contains all the necessary scripts to run our experiments on your current machine.
+We provide in `suites/` the experiment configurations of our experiments which are processed (and run) by [kaval](https://github.com/niklas-uhl/kaval).
+kaval generates the `mpiexec` calls and calls them for us for all instances and algorithm configurations.
+
+> [!NOTE]
+> If you want to run the experiments on a cluster (multiple machines), you need to set a few different settings depending on how mpi jobs can be started/scheduled on your system. 
+> In this case, feel free to contact us, so that we can help you.
+
 ### Run KaDisRedu For Strong Scaling
 
 ### Run KaDisRedu For Weak Scaling
+
+Now, we can run our weak scaling experiments.
+In the weak scaling experiments, we linearly increase the number of vertices and edges of the input graph with the number of cores.
+We investigate three different graph families, using the graph generator [KaGen](https://github.com/KarlsruheGraphGeneration/KaGen).
+
+To run the experiments, execute the following:
+```
+# in experiments/
+sh 02_run_kadisredu_weak.sh
+```
 
 ### Run HtWIS
 

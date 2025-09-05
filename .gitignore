@@ -2,3 +2,9 @@
 
 htwis
 kadisredu
+
+.bash_history
+.local
+
+experiments/Pipfile*
+experiments/experiment_out

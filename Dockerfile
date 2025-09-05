@@ -57,6 +57,9 @@ RUN apt update -y && apt install software-properties-common -y \
 RUN apt update -y && apt upgrade -y && \
     DEBIAN_FRONTEND=noninteractive apt install -y gcc-13 g++-13
 
+RUN update-alternatives --install /usr/bin/gcc gcc /usr/bin/gcc-13 100 \
+ && update-alternatives --install /usr/bin/g++ g++ /usr/bin/g++-13 100
+
 # Install CMake
 RUN wget https://cmake.org/files/v3.30/cmake-3.30.3-linux-x86_64.sh && \
     sh cmake-3.30.3-linux-x86_64.sh --skip-license --prefix=/usr/local
