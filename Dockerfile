@@ -23,12 +23,13 @@ RUN apt-get update && apt-get upgrade -y && \
     ca-certificates build-essential pkg-config gnupg libarchive13 openssh-server openssh-client wget net-tools \
     git \
     libsparsehash-dev \
-    intel-oneapi-mpi-2021.11 intel-oneapi-mpi-devel-2021.11 intel-oneapi-tbb-devel-2021.4.0 && \
+    intel-oneapi-mpi intel-oneapi-mpi-devel intel-oneapi-tbb-devel && \
+    #intel-oneapi-mpi-2021.11 intel-oneapi-mpi-devel-2021.11 intel-oneapi-tbb-devel-2021.4.0 && \
   rm -rf /var/lib/apt/lists/*
 
 ENV LANG=C.UTF-8
-ENV IMPI_VERSION=2021.11
-ENV TBB_VERSION=2021.4.0
+ENV IMPI_VERSION=latest
+ENV TBB_VERSION=latest
 ENV CLASSPATH="/opt/intel/oneapi/mpi/${IMPI_VERSION}/share/java/mpi.jar"
 ENV CMAKE_PREFIX_PATH="/opt/intel/oneapi/tbb/${TBB_VERSION}"
 ENV CPATH="/opt/intel/oneapi/mpi/${IMPI_VERSION}/include"
@@ -36,7 +37,7 @@ ENV CPATH="/opt/intel/oneapi/tbb/${TBB_VERSION}/include:${CPATH}"
 ENV FI_PROVIDER_PATH="/opt/intel/oneapi/mpi/${IMPI_VERSION}/opt/mpi/libfabric/lib/prov:/usr/lib/x86_64-linux-gnu/libfabric"
 ENV I_MPI_ROOT="/opt/intel/oneapi/mpi/${IMPI_VERSION}"
 ENV LD_LIBRARY_PATH="/opt/intel/oneapi/mpi/${IMPI_VERSION}/opt/mpi/libfabric/lib:/opt/intel/oneapi/mpi/${IMPI_VERSION}/lib"
-ENV LD_LIBRARY_PATH="/opt/intel/oneapi/tbb/${IMPI_VERSION}/lib:${LD_LIBRARY_PATH}"
+ENV LD_LIBRARY_PATH="/opt/intel/oneapi/tbb/${TBB_VERSION}/lib:${LD_LIBRARY_PATH}"
 ENV LIBRARY_PATH="/opt/intel/oneapi/mpi/${IMPI_VERSION}/lib"
 ENV LIBRARY_PATH="/opt/intel/oneapi/tbb/${TBB_VERSION}/lib:${LIBRARY_PATH}"
 ENV MANPATH="/opt/intel/oneapi/mpi/${IMPI_VERSION}/share/man"

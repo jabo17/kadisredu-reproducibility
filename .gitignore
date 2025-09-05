@@ -8,3 +8,7 @@ kadisredu
 
 experiments/Pipfile*
 experiments/experiment_out
+
+.viminfo
+.bashrc
+.cache
