@@ -105,8 +105,8 @@ We provide in `suites/` the experiment configurations of our experiments which a
 kaval generates the `mpiexec` calls and calls them for us for all instances and algorithm configurations.
 
 > [!NOTE]
-> If you want to run the experiments on a cluster (multiple machines), you need to set a few different settings depending on how mpi jobs can be started/scheduled on your system. 
-> In this case, feel free to contact us, so that we can help you.
+> If you plan to run the experiments on a cluster (multiple machines), you need to adjust some settings depending on how MPI jobs are started and scheduled on your system. 
+> If you are unsure about the correct configuration, please don't hesitate to contact us -- we'll be glad to help.
 
 ### Run KaDisRedu For Strong Scaling
 
