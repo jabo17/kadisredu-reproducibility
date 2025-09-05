@@ -153,7 +153,7 @@ cd artifacts
 To gather all important metrics from the strong scaling experiments in a CSV, run the following:
 ```bash
 cd strong
-sh 00_kadisredu_strong_results_csv.sh
+sh 00_kadisredu_strong_results_csv.sh # create kadisredu_strong_results.
 ```
 
 ### A2 HtWIS
@@ -161,7 +161,7 @@ sh 00_kadisredu_strong_results_csv.sh
 To obtain the results on the same data set with HtWIS, run the following:
 ```bash
 # in artifacts/strong
-sh 01_htwis_results_csv.sh
+sh 01_htwis_results_csv.sh # creates htwis_results.csv
 ```
 
 ### A2 Weak Scaling
