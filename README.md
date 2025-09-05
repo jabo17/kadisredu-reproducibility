@@ -1,13 +1,10 @@
 # Artifact evaluation of KaDisRedu
 
-In the following, we reproduce the artifacts of the paper[^1] obtained with the implementation[^2].
+In the following, we reproduce the artifacts of the paper[^1] obtained with the [KaDisRedu](https://github.com/jabo17/kadisredu)
 However, we would like to address two difficulties regarding reproducibility in advance:
 
 1. Our algorithms are designed for distributed-memory machines which typically requires access to a HPC cluster.
-Although one can run our algorithms on a single compute node (single machine), this is not sufficient for investigating communication between processes (PEs) over a network and typically does not allow scaling to 1024 cores.
-Morover, running distributed algorithms on an HPC cluster and evaluating their results with a "one-click"-script is typically impossible.
-From our experience, HPC cluster jobs are failing from time to time with unknown reason for the callee.
-Still, we aim to provide you a setup which comes close to a "one-click"-script.
+Although one can run our algorithms on a single compute node (single machine), this is not sufficient for investigating communication between processes (PEs) over a network and typically does not allow scaling to 1024 cores as in our experiments.
 2. Our set of benchmark instances (graphs) requires a lot of storage, and therefore cannot be made easily publicly available for download.
 To that end, we provide only a subset of them. 
 
@@ -22,7 +19,7 @@ For interprocess communication, we use IntelMPI 2021.11 and the MPI-wrapper KaMP
 
 > [!TIP]
 > To simplify the installation process on a single machine we provide a docker container and for HoreKA a module environment, respectively.
-> If neither of those two is an option, you need to provide dependencies yourself.
+> If neither of those two is an option, you need to provide dependencies manually.
 > On most HPC systems, many of them are pre-installed and can be loaded into the active software-stack.
 
 In general, we assume that you have an internet connection to download and install software from the internet.
@@ -115,7 +112,8 @@ We provide in `suites/` the experiment configurations of our experiments which a
 kaval generates the `mpiexec` calls and calls them for us for all instances and algorithm configurations.
 
 > [!NOTE]
-> If you plan to run the experiments on a cluster (multiple machines), you need to adjust some settings depending on how MPI jobs are started and scheduled on your system. 
+> We configured the experiments in this repository to run on you local machine to support an easy reproducibility check.
+> If you plan to run the experiments on a cluster (multiple machines), you most certainly need to adjust some settings depending on how MPI jobs are started and scheduled on your system.
 > If you are unsure about the correct configuration, please don't hesitate to contact us -- we'll be glad to help.
 
 ### Run KaDisRedu For Strong Scaling
@@ -169,5 +167,4 @@ Moreover, we investigated the decrease in the number of vertices when applying o
 
 
 ## References
-[^1]: TODO Link to the paper
-[^2]: TODO Link to repository
+[^1]: Paper is currently in the review process
