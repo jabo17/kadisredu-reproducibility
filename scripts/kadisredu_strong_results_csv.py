@@ -37,7 +37,7 @@ def extract_kadisredu_weak_results(exp_dir, suite):
         config = extract_config_idx_from_filename(file.name)
         iteration = extract_iteration_from_filename(file.name)
         print(config)
-        rows.append({"algo": configs[config], "iteration": iteration} | extract_fields(result_json, time_limit, weak=True))
+        rows.append({"algo": configs[config], "iteration": iteration} | extract_fields(result_json, time_limit, weak=False))
 
     df = pd.DataFrame(rows)
     df.set_index(['algo', 'p', 'graph', 'iteration'], inplace=True)
@@ -56,7 +56,7 @@ if __name__ == "__main__":
     cli.add_argument('-o', '--output', metavar='output', default="", help='Output CSV')
 
     args=cli.parse_args()
-    df = extract_kadisredu_weak_results(args.exp_dir, args.suite)
+    df = extract_kadisredu_strong_results(args.exp_dir, args.suite)
     df.to_csv(args.output, header=True)
 
 

@@ -117,10 +117,10 @@ def extract_fields(obj: dict, time_limit, weak=False) -> dict:
             # reduce phase (including building and partitioning the graph)
             "t_reduce" : extract_max_time(obj, "timer.KaDisRedu.reduce"),
             # reduce phase (without graph partitioner)
-            "t_reduce_without_partition" : extract_max_time(obj, "timer.KaDisRedu.reduce") - t_partition, 
-            "t_partition" : t_partition,
-            "t_build_graph" : t_build_graph,
-            "t_greedy" : extract_max_time(obj, "timer.KaDisRedu.greedy"),
+            #"t_reduce_without_partition" : extract_max_time(obj, "timer.KaDisRedu.reduce") - t_partition, 
+            #"t_partition" : t_partition,
+            #"t_build_graph" : t_build_graph,
+            #"t_greedy" : extract_max_time(obj, "timer.KaDisRedu.greedy"),
             "kernel_nodes": kernel_nodes,
             "rel_kernel_nodes": rel_kernel_nodes,
             "kernel_edges": kernel_edges,
