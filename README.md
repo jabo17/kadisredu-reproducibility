@@ -142,37 +142,35 @@ sh 02_run_htwis.sh
 
 ## Artifacts
 
-After you all experiments were performed, we can evaluate them to obtain the artifacts (tables and plots).
+After all experiments were performed, we can obtain CSV file which with the most relavant data which were use to support our claims in the paper[^1].
 Therefore, change your working directory to `artifacts`.
 ```bash
 cd artifacts
 ```
 
-### A1 Reduction Impact
+### A1 KaDisRedu Srong Scaling
 
-### A2 Reduction Time
+To gather all important metrics from the strong scaling experiments in a CSV, run the following:
+```bash
+cd strong
+sh 00_kadisredu_strong_results_csv.sh
+```
 
-### A3 Comparison With HtWIS
+### A2 HtWIS
 
-### A4 Weak Scaling
+To obtain the results on the same data set with HtWIS, run the following:
+```bash
+# in artifacts/strong
+sh 01_htwis_results_csv.sh
+```
 
-In our weak scaling experiments we compared our heuristic distributed MWIS solvers in terms of the throughput (edges per second) for each instance.
+### A2 Weak Scaling
 
 To gather all important metrics from the weak scaling experiment in a CSV, run the following:
 ```bash
 cd weak
 sh 00_kadisredu_weak_results_csv.sh
 ```
-
-To obtain the throughput plots given the CSV, run now:
-```bash
-
-```
-
-Moreover, we investigated the decrease in the number of vertices when applying our distributed reductions 
-
-## Evaluate Experiments To Obtain Artifacts
-
 
 ## References
 [^1]: Paper is currently in the review process

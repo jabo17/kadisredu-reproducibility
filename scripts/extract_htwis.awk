@@ -4,44 +4,43 @@
 
 BEGIN{
 	OFS=","
-	# obtain graph name
-	sub(".*/", "", file);
-	split(file, g, "_nokey");
-	graph=g[1];
-	# iteration counter (repetitions of the experiment with the graph)
-	i=0;
+  split(f, b, /c0-s/); 
+  split(b[2], b, /-log.txt/); 
+	iteration=b[1];
 } 
+/Graph:/{
+	split($0, g, "instances/")
+  split(g[2], g2, ".gra")
+  graph=g2[1]
+}
 # vertices in input graph
 /n = /{
 	gsub(/[ |\t]/, "", $0); 
 	split($0, a, /[=|;]/); 
-	result[i]["nodes"]=a[2]
+	nodes=a[2]
 } 
 /Finished/{i+=1}
 # vertices in kernel graph
 /Kernel/{
 	split($0, a, ":"); 
-	result[i]["kernel_nodes"] = a[2]
+	kernel_nodes = a[2]
 } 
 # solution weight and running time line
 /total weight/{
 	gsub(" ", "", $0); 
 	split($0, a, /[:|,]/); 
-	result[i]["solution"]=a[2]; 
-	result[i]["t"]=a[6]/1000 # to seconds
+	solution=a[2]; 
+	t=a[6]/1000 # to seconds
 } 
 
-
 END {
-	for(k=0;k<i;k++){
-		if(result[k]["solution"] > 0){
+		if(solution > 0){
 			failed=0
 			# check time limit
-			if(time_limit < result[k]["t"]) {
+			if(time_limit < t) {
 				failed=1
 			}
-			# iteration  (starting with 1), nodes, kernel_nodes, rel_kernel_nodes, solution weight, running time (seconds), failed
-			print "htwis",1,graph,k+1,0,result[k]["nodes"], result[k]["kernel_nodes"],result[k]["kernel_nodes"]/result[k]["nodes"],result[k]["solution"],result[k]["t"],failed
+			# htwis, seed (placeholder), graph, iteration  (starting with 1), nodes, kernel_nodes, rel_kernel_nodes, solution weight, running time (seconds), failed
+			print "htwis",1,graph,iteration,0,nodes,kernel_nodes,kernel_nodes/nodes,solution,t,failed
 		}
-	}
 }

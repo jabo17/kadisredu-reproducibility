@@ -8,7 +8,7 @@ from pathlib import Path
 
 from utils import extract_fields, extract_iteration_from_filename, extract_config_idx_from_filename
 
-def extract_kadisredu_weak_results(exp_dir, suite):
+def extract_kadisredu_strong_results(exp_dir, suite):
     exp_dir = Path(exp_dir)
     suite_data = {}
     with open(suite, "r") as f:
@@ -23,7 +23,7 @@ def extract_kadisredu_weak_results(exp_dir, suite):
         data = json.load(f)
         for i, cfg in enumerate(data):
             assert i == len(configs)
-            configs.append(Path(cfg["config"]).name)
+            configs.append(Path(cfg["config"]).stem)
 
 
     rows = []
@@ -31,12 +31,10 @@ def extract_kadisredu_weak_results(exp_dir, suite):
     files = (f for f in exp_dir.rglob("*") if f.is_file() and not f.name.endswith("log.txt") and f.name != "config.json")
 
     for file in files:
-        print(file.name)
         with open(file, "r") as f:
             result_json = json.load(f)
         config = extract_config_idx_from_filename(file.name)
         iteration = extract_iteration_from_filename(file.name)
-        print(config)
         rows.append({"algo": configs[config], "iteration": iteration} | extract_fields(result_json, time_limit, weak=False))
 
     df = pd.DataFrame(rows)

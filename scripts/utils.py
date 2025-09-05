@@ -10,7 +10,7 @@ from pathlib import Path
 import re
 
 def extract_iteration_from_filename(s):
-    match = re.search(r"-s(\d+)_", s)
+    match = re.search(r"-s(\d+)", s)
     if match:
         return int(match.group(1))
     return None  # or raise an error, or return a default value

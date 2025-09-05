@@ -1,6 +1,6 @@
 #!/usr/bin/env sh
 
-git clone git@github.com:jabo17/distributed-kernelization.git kadisredu
+git clone https://github.com:jabo17/distributed-kernelization.git kadisredu
 cd kadisredu
 git checkout improvement
 git submodule update --init --recursive

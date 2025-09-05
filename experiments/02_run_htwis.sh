@@ -13,4 +13,4 @@ pipenv run ../kaval/run-experiments.py 02_htwis \
     --max-cores $(nproc) \
     --output-dir ./experiment_out/htwis/output \
     --experiment-data-dir ./experiment_out/ \
-    --omit_json_output_path
+    --omit-output-path

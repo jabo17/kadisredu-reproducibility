@@ -1,4 +1,4 @@
-name: htwis
+name: 02_htwis
 executable: htwis/htwis
 ncores: [1]
 time_limit: 7200
@@ -7,31 +7,51 @@ threads_per_rank: [1]
 graphs:
   - generator: dummy
     name: Bump_2911_uf200
-    nokey: ../instances/Bump_2911_uf200.parhip
+    graph:
+       type: positional
+       value: ../instances/Bump_2911_uf200.gra
   - generator: dummy
     name: circuit5M_uf200
-    nokey: ../instances/circuit5M_uf200.parhip
+    graph:
+       type: positional
+       value: ../instances/circuit5M_uf200.gra
   - generator: dummy
     name: germany.osm_uf200
-    nokey: ../instances/germany.osm_uf200.parhip
+    graph:
+       type: positional
+       value: ../instances/germany.osm_uf200.gra
   - generator: dummy
     name: hollywood-2011_uf200
-    nokey: ../instances/hollywood-2011_uf200.parhip
+    graph:
+       type: positional
+       value: ../instances/hollywood-2011_uf200.gra
   - generator: dummy
     name: mesh_buddha-uniform
-    nokey: ../instances/mesh_buddha-uniform.parhip
+    graph:
+       type: positional
+       value: ../instances/mesh_buddha-uniform.gra
   - generator: dummy
     name: snap_com-youtube
-    nokey: ../instances/snap_com-youtube.parhip
+    graph:
+       type: positional
+       value: ../instances/snap_com-youtube.gra
   - generator: dummy
     name: snap_roadNet-CA-uniform
-    nokey: ../instances/snap_roadNet-CA-uniform.parhip
+    graph:
+       type: positional
+       value: ../instances/snap_roadNet-CA-uniform.gra
   - generator: dummy
     name: snap_soc-pokec-relationships-uniform
-    nokey: ../instances/snap_soc-pokec-relationships-uniform.parhip
+    graph:
+       type: positional
+       value: ../instances/snap_soc-pokec-relationships-uniform.gra
   - generator: dummy
     name: snap_wiki-Talk-uniform
-    nokey: ../instances/snap_wiki-Talk-uniform.parhip
+    graph:
+       type: positional
+       value: ../instances/snap_wiki-Talk-uniform.gra
   - generator: dummy
     name: wiki-topcats_uf200
-    nokey: ../instances/wiki-topcats_uf200.parhip
+    graph:
+       type: positional
+       value: ../instances/wiki-topcats_uf200.gra

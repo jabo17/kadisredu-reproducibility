@@ -23,7 +23,7 @@ def extract_kadisredu_weak_results(exp_dir, suite):
         data = json.load(f)
         for i, cfg in enumerate(data):
             assert i == len(configs)
-            configs.append(Path(cfg["config"]).name)
+            configs.append(Path(cfg["config"]).stem)
 
 
     rows = []
