@@ -2,7 +2,6 @@
 
 git clone https://github.com/jabo17/kadisredu.git kadisredu
 cd kadisredu
-git checkout improvement
 git submodule update --init --recursive
 cd ..
 
