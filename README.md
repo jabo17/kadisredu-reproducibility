@@ -1,4 +1,5 @@
-# Artifact evaluation of KaDisRedu
+# Artifact evaluation of KaDisRedu 
+[![DOI](https://zenodo.org/badge/1050372726.svg)](https://doi.org/10.5281/zenodo.17174307)
 
 In the following, we reproduce the artifacts of the paper[^1] obtained with the [KaDisRedu](https://github.com/jabo17/kadisredu)
 However, we would like to address two difficulties regarding reproducibility in advance:
