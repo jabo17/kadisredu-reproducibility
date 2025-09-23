@@ -120,6 +120,13 @@ kaval generates the `mpiexec` calls and calls them for us for all instances and 
 
 ### Run KaDisRedu For Strong Scaling
 
+You can run the strong scaling experiments, by running
+```bash
+# in experiments/
+sh 00_run_kadisredu_strong.sh
+```
+
+
 ### Run KaDisRedu For Weak Scaling
 
 Now, we can run our weak scaling experiments.
