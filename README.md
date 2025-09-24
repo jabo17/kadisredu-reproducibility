@@ -179,6 +179,21 @@ To gather all important metrics from the weak scaling experiment in a CSV, run t
 cd weak
 sh 00_kadisredu_weak_results_csv.sh
 ```
+In the paper, we present the throughput (edges per second) for the different graph families (Figure 7.3).
+You can obtain this plot (`throughput.pdf`) by executing the following:
+```bash
+# in weak
+sh 01_kadisredu_weak_throughput.sh
+```
+The used data for this plot can be found in the new directory `throughput`.
+
+Furthermore, we investigated the solution quality. In the paper in Table 7.2, we investigate it for 1'024 cores.
+You can obtain the table (as csv) for each number of cores by executing the following script.
+```bash
+# in weak
+sh 02_kadisredu_weak_solution_quality.sh
+```
+It creates a directory called `solution_quality` with the tables inside. The tables are named by the fixed number of cores.
 
 ## References
 [^1]: Paper is currently in the review process

@@ -1,0 +1,119 @@
+\documentclass{article}
+
+\usepackage{pgfplots}
+\pgfplotsset{compat=1.18}
+
+\usepgfplotslibrary{colorbrewer}
+\usepgfplotslibrary{groupplots}
+\usepgfplotslibrary{statistics}
+\usetikzlibrary{positioning}
+
+\usepackage{tikz}
+\usetikzlibrary{fit,backgrounds,positioning,arrows.meta, calc, decorations.pathmorphing}
+
+\pgfplotsset{
+  cycle list/Dark2-6,
+  cycle multiindex* list={
+    mark=*\nextlist
+    Dark2-6\nextlist
+    every mark/.append style={
+      draw=.!60!black, fill=.!60!black, opacity=0.3, mark size=1pt
+    }\\
+    \nextlist
+  },
+}
+\pgfplotscreateplotcyclelist{lineplotlist}{
+  {Dark2-A,densely dashed,mark=o,mark options={solid}},
+  {Dark2-B,mark=pentagon*},
+  {Dark2-C,densely dashed,mark=triangle*,mark options={solid}},
+  {Dark2-D,mark=diamond},
+  {Dark2-E,densely dashed,mark=*,mark options={solid}},
+  {Dark2-F,mark=triangle},
+}
+
+\newcommand{\myRHG}[0]{\texttt{RHG}}
+\newcommand{\myRGG}[0]{\texttt{RGG}}
+\newcommand{\myGNM}[0]{\texttt{GNM}}
+\newcommand{\myRHGPath}[0]{throughput/rhg-N20-M22-g2.8.csv}
+\newcommand{\myRGGPath}[0]{throughput/rgg2d-N20-M22.csv}
+\newcommand{\myGNMPath}[0]{throughput/gnm-undirected-N20-M22.csv}
+\newcommand{\sG}[0]{\textsf{GS}}
+\newcommand{\aG}[0]{\textsf{GA}}
+\newcommand{\sRG}[0]{\textsf{RGS}}
+\newcommand{\aRG}[0]{\textsf{RGA}}
+\newcommand{\sRnP}[0]{\textsf{RnPS}}
+\newcommand{\aRnP}[0]{\textsf{RnPA}}
+
+\begin{document}
+	\begin{tikzpicture}
+		\begin{groupplot}[group style={
+						group size=2 by 2,
+						horizontal sep=5mm,
+						vertical sep=17mm,
+						ylabels at=edge left,
+						yticklabels at=edge left,
+					},
+				width=45mm,
+				height=40mm,
+				cycle list name=lineplotlist,
+				legend style={draw=none},
+				xtick={1,4, 16, 64, 256, 1024},
+				xticklabels={$2^0$, $2^2$, $2^4$, $2^6$, $2^8$, $2^{10}$},
+				xlabel style={font=\small},
+				ylabel style={font=\small},
+				xticklabel style={font=\small},
+				yticklabel style={font=\small},
+				ymin=10000,
+				ymax=10000000000,
+				ymode={log},
+				xmode={log},
+				log basis x=2,
+				ytick pos=left,
+				ylabel={throughput},
+				xlabel={cores $p$},
+				xmajorgrids=true,        % Enable major grid lines on x-axis
+				ymajorgrids=true,        % Enable major grid lines on x-axis
+				grid style=dashed,
+			]
+			\nextgroupplot[title=\myGNM,
+				legend to name=group legend,
+				legend columns=1,
+				legend cell align=left,
+				legend style={/tikz/every even column/.append style={column sep=1em}, draw=black, font=\footnotesize}]
+
+      \addplot+[] table[x index=0, y=GS] {\myGNMPath};
+      \addlegendentry{\sG}
+      \addplot+[] table[x index=0, y=RGS] {\myGNMPath};
+      \addlegendentry{\sRG}
+      \addplot+[] table[x index=0, y=RnPS] {\myGNMPath};
+      \addlegendentry{\sRnP}
+      \addplot+[] table[x index=0, y=GA] {\myGNMPath};
+      \addlegendentry{\aG}
+      \addplot+[] table[x index=0, y=RGA] {\myGNMPath};
+      \addlegendentry{\aRG}
+      \addplot+[] table[x index=0, y=RnPA] {\myGNMPath};
+      \addlegendentry{\aRnP}
+
+			\nextgroupplot[title=\myRGG]
+
+      \addplot+[] table[x index=0, y=GS] {\myRGGPath};
+      \addplot+[] table[x index=0, y=RGS] {\myRGGPath};
+      \addplot+[] table[x index=0, y=RnPS] {\myRGGPath};
+      \addplot+[] table[x index=0, y=GA] {\myRGGPath};
+      \addplot+[] table[x index=0, y=RGA] {\myRGGPath};
+      \addplot+[] table[x index=0, y=RnPA] {\myRGGPath};
+
+			\nextgroupplot[title=\myRHG]
+
+      \addplot+[] table[x index=0, y=GS] {\myRHGPath};
+      \addplot+[] table[x index=0, y=RGS] {\myRHGPath};
+      \addplot+[] table[x index=0, y=RnPS] {\myRHGPath};
+      \addplot+[] table[x index=0, y=GA] {\myRHGPath};
+      \addplot+[] table[x index=0, y=RGA] {\myRHGPath};
+      \addplot+[] table[x index=0, y=RnPA] {\myRHGPath};
+
+			\nextgroupplot[hide axis]
+		\end{groupplot}
+		\node[anchor=center, xshift=0cm] at (group c2r2.center) {\pgfplotslegendfromname{group legend}};
+	\end{tikzpicture}
+\end{document}

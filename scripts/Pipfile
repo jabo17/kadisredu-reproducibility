@@ -8,6 +8,7 @@ pandas = "*"
 numpy = "*"
 pyyaml = "*"
 argparse = "*"
+scipy = "*"
 
 [dev-packages]
 
