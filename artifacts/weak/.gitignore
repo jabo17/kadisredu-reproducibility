@@ -1,0 +1,5 @@
+solution_quality/*
+throughput/*
+*.pdf
+*.aux
+*.fbd_latexmk
