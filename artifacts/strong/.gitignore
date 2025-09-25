@@ -1,5 +1,6 @@
 reduction_impact/*
 reduction_time/*
+soa/*
 
 *.aux
 *.fbd_latexmk
