@@ -24,7 +24,7 @@ graphs:
   - generator: kagen
     type: rhg
     N: 20
-    M: 22
+    M: [22, 24]
     gamma: 2.8
     scale_weak: TRUE
     vertexweights-generator: uniform_random
