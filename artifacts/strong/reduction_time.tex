@@ -1,0 +1,121 @@
+\documentclass{article}
+
+\usepackage{pgfplots}
+\pgfplotsset{compat=1.18}
+
+\usepgfplotslibrary{colorbrewer}
+\usepgfplotslibrary{groupplots}
+\usepgfplotslibrary{statistics}
+\usetikzlibrary{positioning}
+
+\usepackage{tikz}
+\usetikzlibrary{fit,backgrounds,positioning,arrows.meta, calc, decorations.pathmorphing}
+
+\pgfplotsset{
+  cycle list/Dark2-6,
+  cycle multiindex* list={
+    mark=*\nextlist
+    Dark2-6\nextlist
+    every mark/.append style={
+      draw=.!60!black, fill=.!60!black, opacity=0.3, mark size=1pt
+    }\\
+    \nextlist
+  },
+}
+\pgfplotscreateplotcyclelist{lineplotlist}{
+  {Dark2-A,densely dashed,mark=o,mark options={solid}},
+  {Dark2-B,mark=pentagon*},
+  {Dark2-C,densely dashed,mark=triangle*,mark options={solid}},
+  {Dark2-D,mark=diamond},
+  {Dark2-E,densely dashed,mark=*,mark options={solid}},
+  {Dark2-F,mark=triangle},
+}
+
+\pgfplotsset{
+  myboxplot/.style={
+    boxplot = {
+      every median/.style={thick},
+      every whisker/.style={thick},
+      every box/.style={thick},
+    }, mark=none, fill, draw=.!20!black,
+  }
+}
+
+\newcommand{\KaDisReduA}[0]{\textsf{DisReduA}}
+\newcommand{\KaDisReduAPath}[0]{reduction_time/DisReduA.csv}
+\newcommand{\KaDisReduS}[0]{\textsf{DisReduS}}
+\newcommand{\KaDisReduSPath}[0]{reduction_time/DisReduS.csv}
+
+\newcommand{\AddPlotIfCol}[4][]{%
+  \pgfplotstablegetcolumnindexbyname{#4}\of#2
+  \ifnum\pgfplotsretval<0
+    % column missing → do nothing
+  \else
+    \addplot+[#1] table[x=#3, y=#4]{#2};
+  \fi
+}
+
+\begin{document}
+	\begin{tikzpicture}
+		\begin{groupplot}[group style={
+						group size=2 by 1,
+						horizontal sep=2.5mm,
+						vertical sep=15mm,
+						ylabels at=edge left,
+						yticklabels at=edge left,
+					},
+				width=0.6\columnwidth,
+        %restrict expr to domain={\thisrow{bar}}{-inf:inf},
+				legend style={draw=none},
+				xlabel={cores $p$},
+				xtick={1,2,3,4,5,6},
+				xticklabels={$2^0$,$2^6$,$2^7$,$2^8$,$2^9$,$2^{10}$},
+				ytick pos=left,
+				ylabel={running time [s]},
+				ymajorgrids,
+				ymode=log,
+				ymax={10000.0},
+				ymin={0.001},
+				ytick={0.001, 0.01, 0.1, 1, 10, 100, 1000, 10000},
+				boxplot/draw direction=y,
+				grid style=dashed,
+			]
+			\nextgroupplot[title=\KaDisReduA{}]
+
+      \addplot+[myboxplot] table[y = 1] {\KaDisReduAPath}; % 1 core
+      \addplot+[myboxplot] table[y = 64] {\KaDisReduAPath}; % 64 cores
+      \addplot+[myboxplot] table[y = 128] {\KaDisReduAPath}; % 128 cores
+      %\addplot+[myboxplot] table[y = 256] {\KaDisReduAPath}; % 256 cores
+      %\addplot+[myboxplot] table[y = 512] {\KaDisReduAPath}; % 512 cores
+      %\addplot+[myboxplot] table[y = 1024] {\KaDisReduAPath}; % 1024 cores
+
+
+      \pgfplotsset{cycle list shift=3}
+      \addplot+[only marks] table[x={1-jitter}, y= 1] {\KaDisReduAPath}; % 1 core
+      \addplot+[only marks] table[x={64-jitter}, y = 64] {\KaDisReduAPath}; % 64 cores
+      \addplot+[only marks] table[x={128-jitter}, y = 128] {\KaDisReduAPath}; % 128 cores
+      %\addplot+[only marks] table[y 256-jitter] {\KaDisReduAPath}; % 256 cores
+      %\addplot+[only marks] table[y 512-jitter] {\KaDisReduAPath}; % 512 cores
+      %\addplot+[only marks] table[y 1024-jitter] {\KaDisReduAPath}; % 1024 cores
+
+      \nextgroupplot[title=\KaDisReduS{}]
+
+      \addplot+[myboxplot] table[y = 1] {\KaDisReduSPath}; 
+      \addplot+[myboxplot] table[y = 64] {\KaDisReduSPath};
+      \addplot+[myboxplot] table[y = 128] {\KaDisReduSPath};
+      %\addplot+[myboxplot] table[y = 256] {\KaDisReduSPath};
+      %\addplot+[myboxplot] table[y = 512] {\KaDisReduSPath};
+      %\addplot+[myboxplot] table[y = 1024] {\KaDisReduSPath};
+
+      \pgfplotsset{cycle list shift=3}
+
+      \addplot+[only marks] table[x={1-jitter}, y = 1] {\KaDisReduSPath};
+      \addplot+[only marks] table[x={64-jitter}, y = 64] {\KaDisReduSPath};
+      \addplot+[only marks] table[x={128-jitter}, y = 128] {\KaDisReduSPath};
+      %\addplot+[only marks] table[y 256-jitter] {\KaDisReduSPath};
+      %\addplot+[only marks] table[y 512-jitter] {\KaDisReduSPath};
+      %\addplot+[only marks] table[y 1024-jitter] {\KaDisReduSPath};
+
+		\end{groupplot}
+	\end{tikzpicture}
+\end{document}
