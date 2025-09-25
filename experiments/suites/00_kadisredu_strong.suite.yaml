@@ -37,11 +37,11 @@ graphs:
     kagen_option_string: "file;filename=../instances/wiki-topcats_uf200.parhip;distribution=balance-edges"
 config:
   - config: 
-    - ../kadisredu/configs/normal_aRG.toml
-    - ../kadisredu/configs/normal_RG.toml
-    - ../kadisredu/configs/aG.toml
-    - ../kadisredu/configs/G.toml
-    - ../kadisredu/configs/async_rnp.toml
-    - ../kadisredu/configs/sync_rnp.toml
+    - ../kadisredu/configs/RGA.toml
+    - ../kadisredu/configs/RGS.toml
+    - ../kadisredu/configs/GA.toml
+    - ../kadisredu/configs/GS.toml
+    - ../kadisredu/configs/RnPA.toml
+    - ../kadisredu/configs/RnPS.toml
     time_limit: 7200
     warmup_mpi: True
