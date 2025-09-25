@@ -164,6 +164,23 @@ cd strong
 sh 00_kadisredu_strong_results_csv.sh # create kadisredu_strong_results.
 ```
 
+The raw results can now be used to obtain the plots.
+In our paper we compared the reduction times for different numbers of cores of both distributed reduce algorithms (DisReduA and DisReduS) (see Figure 7.2).
+You can generate the plots by executing the following script:
+```bash
+# in strong
+sh 02_kadisredu_strong_reduction_time.sh
+```
+This creates the file `reduction_time.pdf` and the necessary data in `reduction_time`.
+If did not perform experiments up to 1'024 cores, you need to uncomment the corresponding `addplot` lines in `reduction_time.tex`.
+
+Similar you can obtain all plots to compare the reduction impact (relative kernel size in terms of vertices and edges). See Figure 7.1 and Figure D.1).
+```bash
+# in strong
+sh 03_kadisredu_strong_reduction_impact.sh
+```
+You will find the plots in `reduction_impact.pdf` and the plotted data in `reduction_impact`.
+
 ### A2 HtWIS
 
 To obtain the results on the same data set with HtWIS, run the following:
