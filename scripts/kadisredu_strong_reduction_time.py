@@ -58,4 +58,3 @@ if __name__ == "__main__":
         pivot = pd.pivot_table(a_df, values=['t_reduce', 'jitter'], index=['graph', 'iteration', 'seed'], columns=['p'])
         pivot.columns = [f"{col}-jitter" if val=="jitter" else col for val, col in pivot.columns]
         pivot.to_csv(output/(used_reducer[algorithm] + ".csv"), index=True, sep=" ")
-

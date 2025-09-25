@@ -46,15 +46,6 @@
 \newcommand{\KaDisReduS}[0]{\textsf{DisReduS}}
 \newcommand{\KaDisReduSPath}[0]{reduction_time/DisReduS.csv}
 
-\newcommand{\AddPlotIfCol}[4][]{%
-  \pgfplotstablegetcolumnindexbyname{#4}\of#2
-  \ifnum\pgfplotsretval<0
-    % column missing → do nothing
-  \else
-    \addplot+[#1] table[x=#3, y=#4]{#2};
-  \fi
-}
-
 \begin{document}
 	\begin{tikzpicture}
 		\begin{groupplot}[group style={
@@ -64,7 +55,7 @@
 						ylabels at=edge left,
 						yticklabels at=edge left,
 					},
-				width=0.6\columnwidth,
+				width=0.6\textwidth,
         %restrict expr to domain={\thisrow{bar}}{-inf:inf},
 				legend style={draw=none},
 				xlabel={cores $p$},

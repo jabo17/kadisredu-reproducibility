@@ -1,0 +1,108 @@
+\documentclass[a4paper,10pt]{article}
+\usepackage[a4paper,margin=1.5cm]{geometry}
+
+\usepackage{pgfplots}
+\pgfplotsset{compat=1.18}
+
+\usepgfplotslibrary{colorbrewer}
+\usepgfplotslibrary{groupplots}
+\usepgfplotslibrary{statistics}
+\usetikzlibrary{positioning}
+
+\usepackage{tikz}
+\usetikzlibrary{fit,backgrounds,positioning,arrows.meta, calc, decorations.pathmorphing}
+
+\pgfplotsset{
+  cycle list/Dark2-6,
+  cycle multiindex* list={
+    mark=*\nextlist
+    Dark2-6\nextlist
+    every mark/.append style={
+      draw=.!60!black, fill=.!60!black, opacity=0.3, mark size=1pt
+    }\\
+    \nextlist
+  },
+}
+\pgfplotscreateplotcyclelist{lineplotlist}{
+  {Dark2-A,densely dashed,mark=o,mark options={solid}},
+  {Dark2-B,mark=pentagon*},
+  {Dark2-C,densely dashed,mark=triangle*,mark options={solid}},
+  {Dark2-D,mark=diamond},
+  {Dark2-E,densely dashed,mark=*,mark options={solid}},
+  {Dark2-F,mark=triangle},
+}
+
+\pgfplotsset{
+  myboxplot/.style={
+    boxplot = {
+      every median/.style={thick},
+      every whisker/.style={thick},
+      every box/.style={thick},
+    }, mark=none, fill, draw=.!20!black,
+  }
+}
+
+\newcommand{\KaDisReduA}[0]{\textsf{DisReduA}}
+\newcommand{\KaDisReduS}[0]{\textsf{DisReduS}}
+
+\begin{document}
+	\begin{tikzpicture}
+		\begin{groupplot}[group style={
+						group size=2 by 4,
+						horizontal sep=5mm,
+						vertical sep=2.2cm,
+						ylabels at=edge left,
+						yticklabels at=edge left,
+					},
+				width=0.35\textwidth,
+				legend style={draw=none},
+				xlabel={cores $p$},
+				ytick pos=left,
+				ymajorgrids,
+				ymax={1.0},
+				ymin={0},
+				boxplot/draw direction=y,
+				grid style=dashed,
+				title style={align=center},
+			]
+      % DisReduA
+      \nextgroupplot[title={reduction ratio \\ $|V_p'|/|V|$},
+        xtick={1, 2, 3, 4, 5, 6},
+        xticklabels={$2^0$,$2^6$,$2^7$,$2^8$,$2^9$,$2^{10}$}]
+      \input{reduction_impact/rel_kernel_nodes_DisReduA.tex}
+      \nextgroupplot[title={rel. reduction ratio\\ $(|V_p'|-|V_1'|)/|V|$},
+				xtick={1, 2, 3, 4, 5},
+				xticklabels={$2^6$,$2^7$,$2^8$,$2^9$,$2^{10}$}]
+      \input{reduction_impact/rel_reduction_ratio_nodes_DisReduA.tex}
+      \nextgroupplot[title={reduction ratio\\ $|E_p'|/|E|$},
+        xtick={1, 2, 3, 4, 5, 6},
+        xticklabels={$2^0$,$2^6$,$2^7$,$2^8$,$2^9$,$2^{10}$}]
+      \input{reduction_impact/rel_kernel_edges_DisReduA.tex}
+      \nextgroupplot[title={rel. reduction ratio\\ $(|E_p'|-|E_1'|)/|E|$},
+				xtick={1, 2, 3, 4, 5},
+				xticklabels={$2^6$,$2^7$,$2^8$,$2^9$,$2^{10}$}]
+      \input{reduction_impact/rel_reduction_ratio_edges_DisReduA.tex}
+
+      % DisReduS
+      \nextgroupplot[title={reduction ratio\\ $|V_p'|/|V|$},
+        xtick={1, 2, 3, 4, 5, 6},
+        xticklabels={$2^0$,$2^6$,$2^7$,$2^8$,$2^9$,$2^{10}$}]
+      \input{reduction_impact/rel_kernel_nodes_DisReduS.tex}
+      \nextgroupplot[title={rel. reduction ratio\\ $(|V_p'|-|V_1'|)/|V|$},
+				xtick={1, 2, 3, 4, 5},
+				xticklabels={$2^6$,$2^7$,$2^8$,$2^9$,$2^{10}$}]
+      \input{reduction_impact/rel_reduction_ratio_nodes_DisReduS.tex}
+      \nextgroupplot[title={reduction ratio\\ $|E_p'|/|E|$},
+        xtick={1, 2, 3, 4, 5, 6},
+        xticklabels={$2^0$,$2^6$,$2^7$,$2^8$,$2^9$,$2^{10}$}]
+      \input{reduction_impact/rel_kernel_edges_DisReduS.tex}
+      \nextgroupplot[title={rel. reduction ratio\\ $(|E_p'|-|E_1'|)/|E|$},
+				xtick={1, 2, 3, 4, 5},
+				xticklabels={$2^6$,$2^7$,$2^8$,$2^9$,$2^{10}$}]
+      \input{reduction_impact/rel_reduction_ratio_edges_DisReduS.tex}
+
+    \end{groupplot}
+    \node at ($(group c1r1.north)!0.5!(group c2r1.north)+(0,1.2cm)$) {\KaDisReduA};
+    \node at ($(group c1r3.north)!0.5!(group c2r3.north)+(0,1.2cm)$) {\KaDisReduS};
+	\end{tikzpicture}
+\end{document}
