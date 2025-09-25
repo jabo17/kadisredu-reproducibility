@@ -224,4 +224,5 @@ sh 02_kadisredu_weak_solution_quality.sh
 It creates a directory called `solution_quality` with the tables inside. The tables are named by the fixed number of cores.
 
 ## References
+
 [^1]: Paper is currently in the review process
