@@ -72,40 +72,10 @@
 				grid style=dashed,
 			]
 			\nextgroupplot[title=\KaDisReduA{}]
-
-      \addplot+[myboxplot] table[y = 1] {\KaDisReduAPath}; % 1 core
-      \addplot+[myboxplot] table[y = 64] {\KaDisReduAPath}; % 64 cores
-      \addplot+[myboxplot] table[y = 128] {\KaDisReduAPath}; % 128 cores
-      %\addplot+[myboxplot] table[y = 256] {\KaDisReduAPath}; % 256 cores
-      %\addplot+[myboxplot] table[y = 512] {\KaDisReduAPath}; % 512 cores
-      %\addplot+[myboxplot] table[y = 1024] {\KaDisReduAPath}; % 1024 cores
-
-
-      \pgfplotsset{cycle list shift=3}
-      \addplot+[only marks] table[x={1-jitter}, y= 1] {\KaDisReduAPath}; % 1 core
-      \addplot+[only marks] table[x={64-jitter}, y = 64] {\KaDisReduAPath}; % 64 cores
-      \addplot+[only marks] table[x={128-jitter}, y = 128] {\KaDisReduAPath}; % 128 cores
-      %\addplot+[only marks] table[y 256-jitter] {\KaDisReduAPath}; % 256 cores
-      %\addplot+[only marks] table[y 512-jitter] {\KaDisReduAPath}; % 512 cores
-      %\addplot+[only marks] table[y 1024-jitter] {\KaDisReduAPath}; % 1024 cores
+      \input{reduction_time/DisReduA.tex}
 
       \nextgroupplot[title=\KaDisReduS{}]
-
-      \addplot+[myboxplot] table[y = 1] {\KaDisReduSPath}; 
-      \addplot+[myboxplot] table[y = 64] {\KaDisReduSPath};
-      \addplot+[myboxplot] table[y = 128] {\KaDisReduSPath};
-      %\addplot+[myboxplot] table[y = 256] {\KaDisReduSPath};
-      %\addplot+[myboxplot] table[y = 512] {\KaDisReduSPath};
-      %\addplot+[myboxplot] table[y = 1024] {\KaDisReduSPath};
-
-      \pgfplotsset{cycle list shift=3}
-
-      \addplot+[only marks] table[x={1-jitter}, y = 1] {\KaDisReduSPath};
-      \addplot+[only marks] table[x={64-jitter}, y = 64] {\KaDisReduSPath};
-      \addplot+[only marks] table[x={128-jitter}, y = 128] {\KaDisReduSPath};
-      %\addplot+[only marks] table[y 256-jitter] {\KaDisReduSPath};
-      %\addplot+[only marks] table[y 512-jitter] {\KaDisReduSPath};
-      %\addplot+[only marks] table[y 1024-jitter] {\KaDisReduSPath};
+      \input{reduction_time/DisReduS.tex}
 
 		\end{groupplot}
 	\end{tikzpicture}

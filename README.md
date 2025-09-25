@@ -172,7 +172,6 @@ You can generate the plots by executing the following script:
 sh 02_kadisredu_strong_reduction_time.sh
 ```
 This creates the file `reduction_time.pdf` and the necessary data in `reduction_time`.
-If did not perform experiments up to 1'024 cores, you need to uncomment the corresponding `addplot` lines in `reduction_time.tex`.
 
 Similar you can obtain plots to compare the reduction ratio (relative kernel size in terms of vertices and edges) and the reduction ratio relative to one core. See Figure 7.1 and Figure D.1).
 ```bash

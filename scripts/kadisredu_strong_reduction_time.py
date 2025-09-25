@@ -60,7 +60,28 @@ if __name__ == "__main__":
 
     df["jitter"] = df.apply(lambda row: jitter(cores[row["p"]]+1), axis=1)
 
+    def shift_line(shift):
+        return "\\pgfplotsset{cycle list shift = %s}\n" % shift
+
     for algorithm, a_df in df.groupby('algo'):
         pivot = pd.pivot_table(a_df, values=['t_reduce', 'jitter'], index=['graph', 'iteration', 'seed'], columns=['p'])
         pivot.columns = [f"{col}-jitter" if val=="jitter" else col for val, col in pivot.columns]
-        pivot.to_csv(output/(used_reducer[algorithm] + ".csv"), index=True, sep=" ")
+        table_path = output/(used_reducer[algorithm] + ".csv")
+        pivot.to_csv(table_path, index=True, sep=" ")
+
+        # write pgfplot
+        plot_lines = []
+
+        for core in cores:
+            plot_lines.append("\\addplot+[myboxplot] table[y=%s]{%s};\n" % (core, table_path))
+
+        num_cores = len(cores)
+        plot_lines.append(shift_line(6-num_cores))
+
+        for core in cores:
+            plot_lines.append("\\addplot+[only marks] table[x={%s-jitter}, y=%s]{%s};\n" % (core, core, table_path))
+
+        plot_lines.append(shift_line(6-num_cores))
+
+        with open(output/(used_reducer[algorithm] + ".tex"), "w") as plot:
+            plot.writelines(plot_lines)
