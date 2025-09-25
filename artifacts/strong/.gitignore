@@ -1,0 +1,8 @@
+reduction_impact/*
+reduction_time/*
+
+*.aux
+*.fbd_latexmk
+*.log
+*.pdf
+*.csv
