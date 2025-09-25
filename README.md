@@ -174,20 +174,31 @@ sh 02_kadisredu_strong_reduction_time.sh
 This creates the file `reduction_time.pdf` and the necessary data in `reduction_time`.
 If did not perform experiments up to 1'024 cores, you need to uncomment the corresponding `addplot` lines in `reduction_time.tex`.
 
-Similar you can obtain all plots to compare the reduction impact (relative kernel size in terms of vertices and edges). See Figure 7.1 and Figure D.1).
+Similar you can obtain plots to compare the reduction ratio (relative kernel size in terms of vertices and edges) and the reduction ratio relative to one core. See Figure 7.1 and Figure D.1).
 ```bash
 # in strong
 sh 03_kadisredu_strong_reduction_impact.sh
 ```
 You will find the plots in `reduction_impact.pdf` and the plotted data in `reduction_impact`.
 
-### A2 HtWIS
+### A2 Comparison with HtWIS
 
 To obtain the results on the same data set with HtWIS, run the following:
 ```bash
 # in artifacts/strong
 sh 01_htwis_results_csv.sh # creates htwis_results.csv
 ```
+
+On the commonly solved data set we compared our algorithms against HtWIS in terms of speed up and running time, respectively (part of Table 7.1).
+Moreover, we investigated the solution quality with respect to the best found solution (also part of Table 7.1).
+You can obtain these comparison as tables with
+```bash
+# in artifacts/strong
+sh 04_kadisredu_strong_soa.sh
+```
+Once the script was executed, you can either read the tables from the log or find them in the newly created directory `soa`.
+It contains three files: `solution_quality.csv`, `speed_up_over_htwis.csv`, and `running_time_seconds.csv`.
+They breakdown down the the solution quality (or speedup or running time) over the algorithms (rows) and cores (columns).
 
 ### A3 Weak Scaling
 

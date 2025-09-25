@@ -43,6 +43,12 @@ if __name__ == "__main__":
     graph_was_not_always_solved = df["graph"].isin(df.loc[ df["t_reduce"].isna() | (df["failed"]==True), "graph"]) 
     print("The following configs failed for these graphs (the resepctive graphs are excluded from the further evaluation)", df.loc[graph_was_not_always_solved])
     df = df.loc[~graph_was_not_always_solved]
+    # exclude graphs which were not solved by all algorithms
+    n_algos = df["algo"].nunique()
+    per_graph = df[["graph", "algo"]].drop_duplicates().groupby("graph")["algo"].nunique()
+    keep_graphs = per_graph[per_graph == n_algos].index
+    print("The following graphs were not solved by at least one algorithm. They are excluded from the remaining evaluation.\n", per_graph[per_graph != n_algos].index)
+    df = df[df["graph"].isin(keep_graphs)]
 
     random.seed(0)
     def jitter(i):
