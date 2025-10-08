@@ -30,6 +30,8 @@ First, we need to clone this repository.
 git clone https://github.com/jabo17/kadisredu-reproducibility.git --recursive
 ```
 
+The permanent version of this reproducibility reprository is available at [Zenodo](https://doi.org/10.5281/zenodo.17174307).
+
 Afterwards, follow one of the three options:
 ### 1. Method: Provide the dependencies manually
 
@@ -43,7 +45,7 @@ Afterwards, follow one of the three options:
 
 #### 1.2 Evaluation Software-Stack
 The following packages are required for evaluation
-- Python and Pipenv
+- Python >=3.10 and Pipenv
 - Texlive
 - AWK
 
@@ -78,10 +80,20 @@ sh 01_run_docker_container.sh
 ```
 
 ## Build Benchmark
-1. Fetch KaDisRedu and HtWIS
+1. With the following script, you can clone KaDisRedu and HtWIS from Github.
+At [Github](https://github.com/jabo17/kadisredu) you can find the latest version of KaDisRedu.
 ```bash
 sh 02_fetch_algorithms.sh
 ```
+Alternatively, use a permanent archieved version of KaDisRedu from [Zenodo](https://doi.org/10.5281/zenodo.17174407) which provides all submodules and FetchContent dependencies out-of-the-box.
+Note, that HtWIS is only available at GitHub.
+```bash
+# download kadisredu archive into kadisredu-reproducibility
+archive=kadisredu-archive.tar.gz # change this
+tar -xvf $archive
+mv ${archive%.tar.gz} kadisredu
+```
+
 3. Build KaDisRedu
 ```bash
 sh 03_build_kadisredu.sh
