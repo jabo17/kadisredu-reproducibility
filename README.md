@@ -98,7 +98,7 @@ mv ${archive%.tar.gz} kadisredu
 ```bash
 sh 03_build_kadisredu.sh <Release/OfflineRelease>
 ```
-4. Build the competitor [HtWIS](https://github.com/mwis-abc/mwis-source-code)
+4. Build the competitor [HtWIS](https://github.com/mwis-abc/mwis-source-code) (commit: dfe66df)
 ```bash
 sh 04_build_htwis.sh
 ```
