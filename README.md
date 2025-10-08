@@ -30,7 +30,7 @@ First, we need to clone this repository.
 git clone https://github.com/jabo17/kadisredu-reproducibility.git --recursive
 ```
 
-The permanent version of this reproducibility reprository is available at [Zenodo](https://doi.org/10.5281/zenodo.17174307).
+The permanent version of this reproducibility repository is available at [Zenodo](https://doi.org/10.5281/zenodo.17174307).
 
 Afterwards, follow one of the three options:
 ### 1. Method: Provide the dependencies manually
@@ -94,9 +94,9 @@ tar -xvf $archive
 mv ${archive%.tar.gz} kadisredu
 ```
 
-3. Build KaDisRedu: If you use the permanent release of KaDisRedu from Zenodo, then do an `offline` build. Otherwise, you need to clone git submodules and FetchContent dependencies with an `online` build.
+3. Build KaDisRedu: If you use the permanent release of KaDisRedu from Zenodo, then build `OfflineRelease`. Otherwise, you need to clone git submodules and FetchContent dependencies build `Release`.
 ```bash
-sh 03_build_kadisredu.sh <online/offline>
+sh 03_build_kadisredu.sh <Release/OfflineRelease>
 ```
 4. Build the competitor [HtWIS](https://github.com/mwis-abc/mwis-source-code)
 ```bash
