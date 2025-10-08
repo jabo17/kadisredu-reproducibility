@@ -26,7 +26,7 @@ jobs:
       - name: Create vendored tarball
         run: |
           RELEASE_NAME="${{ github.event.repository.name }}-${{ github.ref_name }}-with-submodules"
-          tar --exclude-vcs --exclude='.git' --exclude="$GITHUB_ENV" -czf "${RELEASE_NAME}.tar.gz" .
+          tar --exclude-vcs --exclude='.git' --exclude="$GITHUB_ENV" --exclude "{RELEASE_NAME}.tar.gz" -czf "${RELEASE_NAME}.tar.gz" .
           echo "ARCHIVE_NAME=${RELEASE_NAME}.tar.gz" >> $GITHUB_ENV
           
       - name: Attach vendored archive
