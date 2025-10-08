@@ -94,9 +94,9 @@ tar -xvf $archive
 mv ${archive%.tar.gz} kadisredu
 ```
 
-3. Build KaDisRedu
+3. Build KaDisRedu: If you use the permanent release of KaDisRedu from Zenodo, then do an `offline` build. Otherwise, you need to clone git submodules and FetchContent dependencies with an `online` build.
 ```bash
-sh 03_build_kadisredu.sh
+sh 03_build_kadisredu.sh <online/offline>
 ```
 4. Build the competitor [HtWIS](https://github.com/mwis-abc/mwis-source-code)
 ```bash
