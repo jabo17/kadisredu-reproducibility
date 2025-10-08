@@ -1,5 +1,6 @@
 #!/usr/bin/env sh
 
+# The permanently archived code is available at https://zenodo.org/records/17174408
 git clone https://github.com/jabo17/kadisredu.git kadisredu
 cd kadisredu
 git submodule update --init --recursive
