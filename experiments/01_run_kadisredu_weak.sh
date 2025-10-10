@@ -7,7 +7,7 @@ mkdir -p experiment_out
 
 pipenv install
 
-(( cores=$(nproc)/2 )) # assumes nproc returns hyperthreads
+cores=$(( $(nproc) / 2 )) # assumes nproc returns hyperthreads
 
 pipenv run ../kaval/run-experiments.py 01_kadisredu_weak \
     --search-dirs ./suites \
